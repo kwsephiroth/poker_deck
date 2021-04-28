@@ -4,7 +4,7 @@
 
 namespace Poker
 {
-	static std::string suit_to_string(const Suit suit)
+	static std::string to_string(const Suit suit)
 	{
 		switch (suit)
 		{
@@ -21,7 +21,7 @@ namespace Poker
 		}
 	}
 
-	static std::string face_to_string(const Rank face)
+	static std::string to_string(const Rank face)
 	{
 		switch (face)
 		{
@@ -58,7 +58,7 @@ namespace Poker
 
 	static std::ostream& operator<<(std::ostream& os, const PlayingCard& pc)
 	{
-		os << face_to_string(pc.m_rank) << " of " << suit_to_string(pc.m_suit);
+		os << to_string(pc.m_rank) << " of " << to_string(pc.m_suit);
 		return os;
 	}
 }
