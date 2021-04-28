@@ -145,6 +145,7 @@
   <ItemGroup>
     <ClCompile Include="src\Deck.cpp" />
     <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\Utils.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\Constants.h" />

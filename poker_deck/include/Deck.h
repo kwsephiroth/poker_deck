@@ -2,6 +2,7 @@
 #include <vector>
 #include <deque>
 #include <iostream>
+#include <memory>
 #include <unordered_set>
 #include <Constants.h>
 #include <Utils.h>
