@@ -14,7 +14,7 @@ int main()
 
 	std::cout << "\nDealing 52 cards to Hand...\n";
 	auto hand = deck.deal_cards(52);//Executes 52 calls to deal_card function on this deck.
-	std::cout << "Hand (size = " << hand.size() << "):\n";
+	std::cout << "\nHand (size = " << hand.size() << "):\n";
 	for (const auto& card : hand)
 	{
 		if(card)
@@ -30,7 +30,7 @@ int main()
 	if (dealt_card)
 	{
 		hand.push_back(std::move(dealt_card));
-		std::cout << "Hand (size = " << hand.size() << "):\n";
+		std::cout << "\nHand (size = " << hand.size() << "):\n";
 		for (const auto& card : hand)
 		{
 			if (card)
@@ -39,7 +39,7 @@ int main()
 	}
 	else
 	{
-		std::cout << "No more cards left in deck.\n";
+		std::cout << "\nNo more cards left in deck.\n";
 	}
 
 	//deck.replace_cards(hand);
