@@ -1,5 +1,5 @@
 #pragma once
-#include "PlayingCard.h"
+#include <PlayingCard.h>
 #include <string>
 
 namespace Poker

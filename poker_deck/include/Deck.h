@@ -3,9 +3,9 @@
 #include <deque>
 #include <iostream>
 #include <unordered_set>
-#include "Constants.h"
-#include "Utils.h"
-#include "PlayingCard.h"
+#include <Constants.h>
+#include <Utils.h>
+#include <PlayingCard.h>
 
 namespace Poker
 {
@@ -14,8 +14,8 @@ namespace Poker
 	public:
 		Deck();
 		inline size_t max_size() { return MAX_PLAYING_CARDS; }
-		size_t size() { return m_deck.size(); }
-		bool empty() { return m_deck.empty(); }
+		size_t size() const { return m_deck.size(); }
+		bool empty() const { return m_deck.empty(); }
 		void shuffle();
 		std::unique_ptr<PlayingCard> deal_card();
 		std::vector<std::unique_ptr<PlayingCard>> deal_cards(const unsigned int number_of_cards);

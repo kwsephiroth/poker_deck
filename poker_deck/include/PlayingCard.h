@@ -37,6 +37,16 @@ namespace Poker
 
 		PlayingCard(const Suit suit, const Rank rank) : m_suit(suit), m_rank(rank) {}
 		friend std::ostream& operator<<(std::ostream& os, const PlayingCard& pc);
+		
+		bool operator==(const PlayingCard& rhs) const
+		{
+			return (m_rank == rhs.m_rank && m_suit == rhs.m_suit);
+		}
+
+		bool operator!=(const PlayingCard& rhs) const
+		{
+			return !operator==(rhs);
+		}
 	};
 }
 

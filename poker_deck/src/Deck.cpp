@@ -1,4 +1,4 @@
-#include "..\include\Deck.h"
+#include <Deck.h>
 
 namespace Poker
 {

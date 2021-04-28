@@ -1,5 +1,5 @@
 #include <iostream>
-#include "../include/Deck.h"
+#include <Deck.h>
 
 int main()
 {
@@ -26,7 +26,7 @@ int main()
 
 	std::cout << "\nDealing 1 card to Hand.\n";
 	auto dealt_card = deck.deal_card();//Executes the 53rd call to deal_card function on this deck.
-	
+
 	if (dealt_card)
 	{
 		hand.push_back(std::move(dealt_card));
