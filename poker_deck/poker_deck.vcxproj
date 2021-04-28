@@ -145,6 +145,8 @@
   <ItemGroup>
     <ClInclude Include="include\Constants.h" />
     <ClInclude Include="include\Deck.h" />
+    <ClInclude Include="include\PlayingCard.h" />
+    <ClInclude Include="include\Utils.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
