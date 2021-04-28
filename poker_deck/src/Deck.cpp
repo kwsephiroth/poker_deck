@@ -54,7 +54,7 @@ namespace Poker
 		}
 	}
 
-	std::unique_ptr<PlayingCard> Deck::deal_card()
+	std::unique_ptr<PlayingCard> Deck::deal_card()//Returns null if there are no more cards to deal.
 	{
 		std::unique_ptr<PlayingCard> dealt_card = nullptr;
 		

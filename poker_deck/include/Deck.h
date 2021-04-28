@@ -25,7 +25,7 @@ namespace Poker
 		void replace_cards(std::vector<std::unique_ptr<PlayingCard>>& playing_cards);
 		void place_card_on_bottom(std::unique_ptr<PlayingCard> playing_card);
 		void place_card_in_position(std::unique_ptr<PlayingCard> playing_card, const unsigned int position);
-        void print();//TODO: Determine if this should really be public
+        void print();
 	
 	private:
 		void initialize();
