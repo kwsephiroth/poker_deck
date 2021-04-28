@@ -2,66 +2,6 @@
 
 namespace Poker
 {
-	const PlayingCard Deck::m_playing_cards[MAX_PLAYING_CARDS] =
-	{
-		{Suit::CLUBS, Face::ACE},
-		{Suit::CLUBS, Face::TWO},
-		{Suit::CLUBS, Face::THREE},
-		{Suit::CLUBS, Face::FOUR},
-		{Suit::CLUBS, Face::FIVE},
-		{Suit::CLUBS, Face::SIX},
-		{Suit::CLUBS, Face::SEVEN},
-		{Suit::CLUBS, Face::EIGHT},
-		{Suit::CLUBS, Face::NINE},
-		{Suit::CLUBS, Face::TEN},
-		{Suit::CLUBS, Face::JACK},
-		{Suit::CLUBS, Face::QUEEN},
-		{Suit::CLUBS, Face::KING},
-
-		{Suit::DIAMONDS, Face::ACE},
-		{Suit::DIAMONDS, Face::TWO},
-		{Suit::DIAMONDS, Face::THREE},
-		{Suit::DIAMONDS, Face::FOUR},
-		{Suit::DIAMONDS, Face::FIVE},
-		{Suit::DIAMONDS, Face::SIX},
-		{Suit::DIAMONDS, Face::SEVEN},
-		{Suit::DIAMONDS, Face::EIGHT},
-		{Suit::DIAMONDS, Face::NINE},
-		{Suit::DIAMONDS, Face::TEN},
-		{Suit::DIAMONDS, Face::JACK},
-		{Suit::DIAMONDS, Face::QUEEN},
-		{Suit::DIAMONDS, Face::KING},
-
-		{Suit::HEARTS, Face::ACE},
-		{Suit::HEARTS, Face::TWO},
-		{Suit::HEARTS, Face::THREE},
-		{Suit::HEARTS, Face::FOUR},
-		{Suit::HEARTS, Face::FIVE},
-		{Suit::HEARTS, Face::SIX},
-		{Suit::HEARTS, Face::SEVEN},
-		{Suit::HEARTS, Face::EIGHT},
-		{Suit::HEARTS, Face::NINE},
-		{Suit::HEARTS, Face::TEN},
-		{Suit::HEARTS, Face::JACK},
-		{Suit::HEARTS, Face::QUEEN},
-		{Suit::HEARTS, Face::KING},
-
-		{Suit::SPADES, Face::ACE},
-		{Suit::SPADES, Face::TWO},
-		{Suit::SPADES, Face::THREE},
-		{Suit::SPADES, Face::FOUR},
-		{Suit::SPADES, Face::FIVE},
-		{Suit::SPADES, Face::SIX},
-		{Suit::SPADES, Face::SEVEN},
-		{Suit::SPADES, Face::EIGHT},
-		{Suit::SPADES, Face::NINE},
-		{Suit::SPADES, Face::TEN},
-		{Suit::SPADES, Face::JACK},
-		{Suit::SPADES, Face::QUEEN},
-		{Suit::SPADES, Face::KING},
-	};
-
-
 	Deck::Deck()
 	{
 		initialize_deck();
@@ -70,14 +10,24 @@ namespace Poker
 	void Deck::initialize_deck()
 	{
 		//Generate random deck of playing cards using available playing cards.
-		std::unordered_set<int> random_indices;//Stores unique random indices.
+		std::unordered_set<int> random_suit_indices;
+		std::unordered_set<int> random_rank_indices;
 
+		static const Suit suits[MAX_SUITS] = { Suit::CLUBS, Suit::DIAMONDS, Suit::HEARTS, Suit::SPADES };
+		static const Rank ranks[MAX_RANKS] = { Rank::ACE, Rank::TWO, Rank::THREE, Rank::FOUR, Rank::FIVE, Rank::SIX, 
+										Rank::SEVEN, Rank::EIGHT, Rank::NINE, Rank::TEN, Rank::JACK, Rank::QUEEN, Rank::KING };
+
+		//Compile sets of unique indices
 		srand(time(0));
-		while (random_indices.size() < MAX_PLAYING_CARDS) random_indices.insert(rand() % MAX_PLAYING_CARDS);
+		while (random_suit_indices.size() < MAX_SUITS) random_suit_indices.insert(rand() % MAX_SUITS);
+		while (random_rank_indices.size() < MAX_RANKS) random_rank_indices.insert(rand() % MAX_RANKS);
 
-		for (const auto index : random_indices)
+		for (const auto suit_index : random_suit_indices)
 		{
-			m_deck.push_back(std::make_unique<PlayingCard>(m_playing_cards[index]));
+			for (const auto rank_index : random_rank_indices)
+			{
+				m_deck.emplace_back(std::make_unique<PlayingCard>(suits[suit_index], ranks[rank_index]));
+			}
 		}
 	}
 
@@ -97,7 +47,7 @@ namespace Poker
 	void Deck::shuffle()
 	{
 		auto n = m_deck.size();
-		for (int i = 0; i < n - 1; i++)
+		for (size_t i = 0; i < n - 1; i++)
 		{
 			// generate a random number `j` such that `i <= j < n` and
 			// swap the element present at index `j` with the element
@@ -111,7 +61,7 @@ namespace Poker
 	std::unique_ptr<PlayingCard> Deck::deal_card()
 	{
 		std::unique_ptr<PlayingCard> dealt_card = nullptr;
-
+		
 		if (!m_deck.empty())
 		{
 			dealt_card = std::move(m_deck.front());

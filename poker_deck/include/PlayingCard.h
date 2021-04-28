@@ -12,7 +12,7 @@ namespace Poker
 		DIAMONDS
 	};
 
-	enum class Face
+	enum class Rank
 	{
 		UNKNOWN = 0,
 		ACE = 1,
@@ -33,8 +33,9 @@ namespace Poker
 	struct PlayingCard
 	{
 		Suit m_suit = Suit::UNKNOWN;
-		Face m_face = Face::UNKNOWN;
+		Rank m_rank = Rank::UNKNOWN;
 
+		PlayingCard(const Suit suit, const Rank rank) : m_suit(suit), m_rank(rank) {}
 		friend std::ostream& operator<<(std::ostream& os, const PlayingCard& pc);
 	};
 }

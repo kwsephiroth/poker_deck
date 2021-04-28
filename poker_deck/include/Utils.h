@@ -21,35 +21,35 @@ namespace Poker
 		}
 	}
 
-	static std::string face_to_string(const Face face)
+	static std::string face_to_string(const Rank face)
 	{
 		switch (face)
 		{
-		case Face::ACE:
+		case Rank::ACE:
 			return "Ace";
-		case Face::TWO:
+		case Rank::TWO:
 			return "2";
-		case Face::THREE:
+		case Rank::THREE:
 			return "3";
-		case Face::FOUR:
+		case Rank::FOUR:
 			return "4";
-		case Face::FIVE:
+		case Rank::FIVE:
 			return "5";
-		case Face::SIX:
+		case Rank::SIX:
 			return "6";
-		case Face::SEVEN:
+		case Rank::SEVEN:
 			return "7";
-		case Face::EIGHT:
+		case Rank::EIGHT:
 			return "8";
-		case Face::NINE:
+		case Rank::NINE:
 			return "9";
-		case Face::TEN:
+		case Rank::TEN:
 			return "10";
-		case Face::JACK:
+		case Rank::JACK:
 			return "Jack";
-		case Face::QUEEN:
+		case Rank::QUEEN:
 			return "Queen";
-		case Face::KING:
+		case Rank::KING:
 			return "King";
 		default:
 			return "Unknown";
@@ -58,7 +58,7 @@ namespace Poker
 
 	static std::ostream& operator<<(std::ostream& os, const PlayingCard& pc)
 	{
-		os << face_to_string(pc.m_face) << " of " << suit_to_string(pc.m_suit);
+		os << face_to_string(pc.m_rank) << " of " << suit_to_string(pc.m_suit);
 		return os;
 	}
 }

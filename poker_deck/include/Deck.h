@@ -22,7 +22,6 @@ namespace Poker
 		void clear_deck();
 		void print_deck();
 
-		static const PlayingCard m_playing_cards[MAX_PLAYING_CARDS];
 		std::vector<std::unique_ptr<PlayingCard>> m_deck;
 	};
 }
